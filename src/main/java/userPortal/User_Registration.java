@@ -3,23 +3,49 @@ package userPortal;
 import java.util.Scanner;
 
 public class User_Registration {
-    public static boolean validateFirstName(String firstName, String lastname) {
-        return firstName.matches("^[A-Z][a-zA-Z]{2,}$") && lastname.matches("^[A-Z][a-zA-Z]{2,}$");
+
+	//firstName and LastName
+    public static boolean validateName(String name) {
+        return name.matches("^[A-Z][a-zA-Z]{2,}$");
+    }
+
+    //special characters
+    public static String removeSpecialCharacters(String input) {
+        return input.replaceAll("[^a-zA-Z0-9 ]", "");
+    }
+
+    //email
+    public static boolean validateEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*(?:\\.[a-zA-Z]{2,})$";
+        return email.matches(emailRegex);
     }
 
     public static void main(String[] args) {
-    	Scanner sc = new Scanner(System.in);
-    	System.out.print("Enter the first name: ");
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the first name: ");
         String firstName = sc.nextLine();
-        
+        firstName = removeSpecialCharacters(firstName);
+
         System.out.print("Enter the last name: ");
         String lastName = sc.nextLine();
+        lastName = removeSpecialCharacters(lastName);
+
+        System.out.print("Enter the email: ");
+        String email = sc.nextLine();
+
         sc.close();
-        
-        if (validateFirstName(firstName , lastName)) {
+
+        if (validateName(firstName) && validateName(lastName)) {
             System.out.println(firstName + " " + lastName + " is a valid name.");
         } else {
             System.out.println(firstName + " " + lastName + " is not a valid name.");
+        }
+
+        if (validateEmail(email)) {
+            System.out.println(email + " is a valid email.");
+        } else {
+            System.out.println(email + " is not a valid email.");
         }
     }
 }
