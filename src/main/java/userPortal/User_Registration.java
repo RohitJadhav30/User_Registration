@@ -36,6 +36,11 @@ public class User_Registration {
     	if(!password.matches(".*[A-Z].*")) {
     		return false;
     	}
+    	
+    	//rule3
+    	if(!password.matches(".*\\d.*")){
+    		return false;
+    	}
     	return true;
     }
 
