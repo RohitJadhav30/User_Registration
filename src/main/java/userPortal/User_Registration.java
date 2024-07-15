@@ -30,6 +30,10 @@ public class User_Registration {
     public static boolean validatePassword(String password) {
 
 
+    	String PassRegex = "^(?=.*[A-Z])(?=.*[0-9])(?=.{0,9}[!@#$%^&*()_+=-{};:'<>,./?][^!@#$%^&*()_+=-{};:'<>,./?]{0,7})(?!.*[@.]).{8,}$";
+    	return password.matches(PassRegex);
+
+
     	if(password.length() < 8) {
     		return false;
     	}
@@ -69,8 +73,20 @@ public class User_Registration {
         String lastName = sc.nextLine();
         lastName = removeSpecialCharacters(lastName);
 
-        System.out.print("Enter the email: ");
-        String email = sc.nextLine();
+        System.out.print("Enter the emails (separated by commas): ");
+        String emailsInput = sc.nextLine();
+
+        String[] emails = emailsInput.split(",");
+        boolean allEmailsValid = true;
+        for (String email : emails) {
+            email = email.trim();
+            if (validateEmail(email)) {
+                System.out.println(email + " is a valid email.");
+            } else {
+                System.out.println(email + " is not a valid email.");
+                allEmailsValid = false;
+            }
+        }
         
         System.out.print("Enter the mobile number: ");
         String mobileNo = sc.nextLine();
@@ -84,12 +100,6 @@ public class User_Registration {
             System.out.println(firstName + " " + lastName + " is a valid name.");
         } else {
             System.out.println(firstName + " " + lastName + " is not a valid name.");
-        }
-
-        if (validateEmail(email)) {
-            System.out.println(email + " is a valid email.");
-        } else {
-            System.out.println(email + " is not a valid email.");
         }
         
         if (validateMobileNumber(mobileNo)) {
