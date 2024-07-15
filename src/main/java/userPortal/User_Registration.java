@@ -28,9 +28,16 @@ public class User_Registration {
     
     //password
     public static boolean validatePassword(String password) {
-    	//rule 1
-    	return password.length() >= 8;
     	
+    	if(password.length() < 8) {
+    		return false;
+    	}
+    	
+    	if(!password.matches(".*[A-Z].*")) {
+    		return false;
+    	}
+    	return true;   	
+
     }
 
     public static void main(String[] args) {
