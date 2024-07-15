@@ -28,20 +28,20 @@ public class User_Registration {
     
     //password
     public static boolean validatePassword(String password) {
-    	//rule1
+    	
     	if(password.length() < 8) {
     		return false;
     	}
-    	//rule2
+    	
     	if(!password.matches(".*[A-Z].*")) {
     		return false;
     	}
-    	
-    	//rule3
+
     	if(!password.matches(".*\\d.*")){
     		return false;
     	}
     	return true;
+
     }
 
     public static void main(String[] args) {
