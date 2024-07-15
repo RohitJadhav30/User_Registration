@@ -29,6 +29,7 @@ public class User_Registration {
     //password
     public static boolean validatePassword(String password) {
 
+
     	if(password.length() < 8) {
     		return false;
     	}
@@ -36,7 +37,16 @@ public class User_Registration {
     	if(!password.matches(".*[A-Z].*")) {
     		return false;
     	}
+
     	
+    	if(password.length() < 8) {
+    		return false;
+    	}
+    	
+    	if(!password.matches(".*[A-Z].*")) {
+    		return false;
+    	}
+
     	if(!password.matches(".*\\d.*")){
     		return false;
     	}
@@ -45,6 +55,7 @@ public class User_Registration {
     		return false;
     	}
     	return true;
+
     }
 
     public static void main(String[] args) {
