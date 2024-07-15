@@ -19,6 +19,12 @@ public class User_Registration {
         String emailRegex = "^[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*(?:\\.[a-zA-Z]{2,})$";
         return email.matches(emailRegex);
     }
+    
+    //mobile number
+    public static boolean validateMobileNumber(String mobileNumber) {
+        String mobileRegex = "^(91 )?\\d{10}$";
+        return mobileNumber.matches(mobileRegex);
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -33,6 +39,9 @@ public class User_Registration {
 
         System.out.print("Enter the email: ");
         String email = sc.nextLine();
+        
+        System.out.print("Enter the mobile number: ");
+        String mobileNo = sc.nextLine();
 
         sc.close();
 
@@ -46,6 +55,12 @@ public class User_Registration {
             System.out.println(email + " is a valid email.");
         } else {
             System.out.println(email + " is not a valid email.");
+        }
+        
+        if (validateMobileNumber(mobileNo)) {
+            System.out.println(mobileNo + " is a valid mobile number.");
+        } else {
+            System.out.println(mobileNo + " is not a valid mobile number.");
         }
     }
 }
