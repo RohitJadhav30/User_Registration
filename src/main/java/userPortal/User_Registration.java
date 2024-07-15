@@ -25,6 +25,13 @@ public class User_Registration {
         String mobileRegex = "^(91 )?\\d{10}$";
         return mobileNumber.matches(mobileRegex);
     }
+    
+    //password
+    public static boolean validatePassword(String password) {
+    	//rule 1
+    	return password.length() >= 8;
+    	
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -42,6 +49,9 @@ public class User_Registration {
         
         System.out.print("Enter the mobile number: ");
         String mobileNo = sc.nextLine();
+        
+        System.out.print("Enter the password: ");
+        String password = sc.next();
 
         sc.close();
 
@@ -61,6 +71,12 @@ public class User_Registration {
             System.out.println(mobileNo + " is a valid mobile number.");
         } else {
             System.out.println(mobileNo + " is not a valid mobile number.");
+        }
+        
+        if (validatePassword(password)) {
+            System.out.println(password + " is a valid password.");
+        } else {
+            System.out.println(password + " is not a valid password.");
         }
     }
 }
