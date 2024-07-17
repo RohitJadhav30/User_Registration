@@ -1,57 +1,63 @@
-import org.junit.Assert;
+
 
 import userPortal.User_Registration;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class UserRegistrationTest {
 
 	@Test
 	public void validFNameTest() {
 		Boolean result = User_Registration.validateName("Rohit");
-		Assert.assertTrue(result);
+		Assertions.assertTrue(result);
 	}
 	
 	@Test
 	public void inValidFNameTest() {
 		Boolean result = User_Registration.validateName("rohit");
-		Assert.assertFalse(result);
+		Assertions.assertFalse(result);
 	}
 	
 	@Test
 	public void validLNameTest() {
 		Boolean result = User_Registration.validateName("Jadhav");
-		Assert.assertTrue(result);
+		Assertions.assertTrue(result);
 	}
 	
 	@Test
 	public void inValidLNameTest() {
 		Boolean result = User_Registration.validateName("jadhav");
-		Assert.assertFalse(result);
+		Assertions.assertFalse(result);
 	}
 	
-	@Test
-	public void validEmailTest() {
-		Boolean result = User_Registration.validateEmail("jadhavrohit@gmail.com");
-		Assert.assertTrue(result);
+	@ParameterizedTest
+	@ValueSource(strings = {"jadhav.rohit3004@gmail.com", "jadhav.254@gmail.com", "gp.dhande12@gmail.com"})
+	public void validEmailTest(String mail) {
+		Boolean result = User_Registration.validateEmail(mail);
+		Assertions.assertTrue(result);
 	}
 	
-	@Test
-	public void inValidEmailTest() {
-		Boolean result = User_Registration.validateEmail("Jadhavrohit@gmail.com");
-		Assert.assertFalse(result);
+	@ParameterizedTest
+	@ValueSource(strings = {"Jadhav#gmail.com", 
+			"@gmail.com", "205rohit@gmail.com"})
+	public void inValidEmailTest(String mail) {
+		Boolean result = User_Registration.validateEmail(mail);
+		Assertions.assertFalse(result);
 	}
 	
 	@Test
 	public void validMobileTest() {
 		Boolean result = User_Registration.validateMobileNumber("7875678797");
-		Assert.assertTrue(result);
+		Assertions.assertTrue(result);
 	}
 	
 	@Test
 	public void inValidMobileTest() {
 		Boolean result = User_Registration.validateMobileNumber("787567879");
-		Assert.assertFalse(result);
+		Assertions.assertFalse(result);
 	}
 
 }
