@@ -28,38 +28,8 @@ public class User_Registration {
     
     //password
     public static boolean validatePassword(String password) {
-
-
     	String PassRegex = "^(?=.*[A-Z])(?=.*[0-9])(?=.{0,9}[!@#$%^&*()_+=-{};:'<>,./?][^!@#$%^&*()_+=-{};:'<>,./?]{0,7})(?!.*[@.]).{8,}$";
     	return password.matches(PassRegex);
-
-
-    	if(password.length() < 8) {
-    		return false;
-    	}
-
-    	if(!password.matches(".*[A-Z].*")) {
-    		return false;
-    	}
-
-    	
-    	if(password.length() < 8) {
-    		return false;
-    	}
-    	
-    	if(!password.matches(".*[A-Z].*")) {
-    		return false;
-    	}
-
-    	if(!password.matches(".*\\d.*")){
-    		return false;
-    	}
-    	
-    	if(!(password.replaceAll("[A-Za-z0-9]", "").length() == 1)) {
-    		return false;
-    	}
-    	return true;
-
     }
 
     public static void main(String[] args) {
