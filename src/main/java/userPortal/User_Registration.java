@@ -43,6 +43,7 @@ public class User_Registration {
         return true;
     }
     
+
     //Password
     public static boolean validatePassword(String input) throws InvalidInputException {
     	Predicate<String> validatePassword = password -> validateFields(password, PASSWORD_PATTERN);
