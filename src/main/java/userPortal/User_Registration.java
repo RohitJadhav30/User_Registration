@@ -30,7 +30,6 @@ public class User_Registration {
         return true;
     }
     
-
     public static boolean validatePassword(String password) throws InvalidInputException {
         String passRegex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=\\-{}\\[\\]:;<>,./?])(?!.*[@.])(?=\\S+$).{8,}$";
         if (!password.matches(passRegex)) {
@@ -39,36 +38,6 @@ public class User_Registration {
     	return true;
 
     }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter the first name: ");
-        String firstName = sc.nextLine();
-        firstName = removeSpecialCharacters(firstName);
-
-        System.out.print("Enter the last name: ");
-        String lastName = sc.nextLine();
-        lastName = removeSpecialCharacters(lastName);
-
-        System.out.print("Enter the emails (separated by commas): ");
-        String emailsInput = sc.nextLine();
-
-        String[] emails = emailsInput.split(",");
-        boolean allEmailsValid = true;
-        for (String email : emails) {
-            email = email.trim();
-            if (validateEmail(email)) {
-                System.out.println(email + " is a valid email.");
-            } else {
-                System.out.println(email + " is not a valid email.");
-                allEmailsValid = false;
-            }
-
-        }
-        return true;
-    }
-
 
     public static void main(String[] args) {
         
